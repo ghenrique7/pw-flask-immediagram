@@ -1,0 +1,18 @@
+
+<h1> Rota Perfil do {{ usuario.username }} - {{ usuario.id }}</h1>
+
+<form method="post" enctype="multipart/form-data" action={{ url_for('perfil', id_usuario=usuario.id) }}>
+        {{ form.csrf_token }}
+        <input type="file" class="form-control" name="foto" id="foto" placeholder="Foto">
+        <button type="submit">Enviar</button>
+</form>
+
+<div class="photo-feed">
+    {% for foto in fotos %}
+    <div class="photo-item">
+        <img src="{{ url_for('static', filename='fotos_posts/' + foto.imagem) }}" alt="Photo">
+        <p>{{ foto.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+

@@ -1,0 +1,15 @@
+{% block feed %}
+<h1>Feed</h1>
+<p>Bem vindo, {{ usuario.username }}!</p>
+
+<!-- Loop through the photos and display them -->
+<div class="photo-feed">
+    {% for foto in fotos %}
+    <div class="photo-item">
+        <img src="{{ url_for('static', filename='fotos_posts/' + foto.imagem) }}" alt="Photo">
+        <p>{{ foto.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock feed %}
