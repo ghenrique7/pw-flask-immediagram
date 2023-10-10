@@ -72,23 +72,23 @@ def feed():
     return render_template("feed.html", fotos=fotos, usuario=usuario)
 
 
-@app.route("/delete_photo/<int:photo_id>", methods=["POST"])
-@login_required  # Ensure that the user is logged in to delete a photo
-def delete_photo(photo_id):
-    photo = Foto.query.get(photo_id)
+@app.route("/apagar-foto/<foto_id>", methods=["POST"])
+@login_required
+def apagar_foto(foto_id):
+    foto = Foto.query.get(foto_id)
 
     # Check if the user is authorized to delete the photo
-    if photo and photo.id_usuario == current_user.id:
+    if foto and foto.id_usuario == current_user.id:
         # Delete the photo from the database
-        database.session.delete(photo)
+        database.session.delete(foto)
         database.session.commit()
 
         # Delete the photo file from the server (optional)
         # You can use os.remove to delete the file from the filesystem
         # os.remove(os.path.join(app.config["UPLOAD_FOLDER"], photo.imagem))
 
-        flash("Photo deleted successfully", "success")
+        flash("Foto deletada com sucesso", "success")
     else:
-        flash("You are not authorized to delete this photo", "danger")
+        flash("Você não tem autorização para deletar essa foto", "danger")
 
     return redirect(url_for("feed"))

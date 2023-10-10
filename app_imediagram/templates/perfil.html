@@ -1,3 +1,6 @@
+{% extends('homepage.html') %}
+
+{% block content %}
 
 <h1> Rota Perfil do {{ usuario.username }} - {{ usuario.id }}</h1>
 
@@ -7,12 +10,15 @@
         <button type="submit">Enviar</button>
 </form>
 
-<div class="photo-feed">
-    {% for foto in fotos %}
-    <div class="photo-item">
-        <img src="{{ url_for('static', filename='fotos_posts/' + foto.imagem) }}" alt="Photo">
-        <p>{{ foto.description }}</p>
+    <div class="photo-feed">
+        {% for foto in fotos %}
+        <div class="photo-item">
+            <img class="photo" src="{{ url_for('static', filename='fotos_posts/' + foto.imagem) }}" alt="Photo">
+            <form class="d-flex justify-content-center align-items-center mt-3" method="POST" action="{{ url_for('apagar_foto', foto_id=foto.id) }}">
+                <button type="submit" class="btn btn-danger">Apagar Foto</button>
+            </form>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
+{% endblock %}
