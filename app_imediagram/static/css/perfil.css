@@ -1,17 +1,22 @@
-.photo-feed {
+.foto-perfil-container {
+    padding-top: 50px;
+    margin: 0 auto;
+}
+
+.foto-perfil {
     list-style: none;
     padding: 0px;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
+    width: 75vw;
+    margin: 0 auto;
     padding-bottom: 150px;
 }
 
-.photo-item {
-    max-width: 15%;
+.foto-perfil-item {
+    width: calc(25% - 10px);
+    margin-right: 80px;
     margin-bottom: 20px;
-    margin-right: 10px;
     background-color: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
@@ -20,19 +25,19 @@
     text-align: center;
 }
 
-.photo-item:hover {
+.foto-perfil-item:hover {
     transform: scale(1.02);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
-.photo-item .photo {
+.foto-perfil-item .foto {
     border-radius: 8px 8px 0 0;
     object-fit: cover;
     height: 250px;
 }
 
-.photo-item p:nth-child(1) {
+.foto-perfil-item p:nth-child(1) {
     font-weight: bold;
     margin: 10px 10px;
     text-align: left;

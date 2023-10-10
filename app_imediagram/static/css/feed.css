@@ -1,5 +1,7 @@
 .photo-feed-container {
-    max-width: 500px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 50px;
 }
 
 .photo-feed {
@@ -37,6 +39,7 @@
     height: 500px;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
+
 }
 
 .photo-item p:nth-child(1) {

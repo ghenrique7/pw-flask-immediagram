@@ -53,8 +53,7 @@ def perfil(id_usuario):
             database.session.commit()
         return render_template("perfil.html", fotos=fotos, usuario=current_user, form=form_foto)
     else:
-        usuario = Usuario.query.get(int(id_usuario))
-        return render_template("perfil.html", usuario=usuario, form=None)
+        return redirect(url_for("feed"))
 
 
 @app.route("/logout")
@@ -77,18 +76,12 @@ def feed():
 def apagar_foto(foto_id):
     foto = Foto.query.get(foto_id)
 
-    # Check if the user is authorized to delete the photo
     if foto and foto.id_usuario == current_user.id:
-        # Delete the photo from the database
         database.session.delete(foto)
         database.session.commit()
-
-        # Delete the photo file from the server (optional)
-        # You can use os.remove to delete the file from the filesystem
-        # os.remove(os.path.join(app.config["UPLOAD_FOLDER"], photo.imagem))
 
         flash("Foto deletada com sucesso", "success")
     else:
         flash("Você não tem autorização para deletar essa foto", "danger")
 
-    return redirect(url_for("feed"))
+    return redirect(url_for("perfil", id_usuario=current_user.id))
