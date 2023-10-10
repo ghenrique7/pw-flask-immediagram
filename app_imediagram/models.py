@@ -14,6 +14,7 @@ class Usuario(database.Model, UserMixin):
     email = database.Column(database.String, nullable=False, unique=True)
     senha = database.Column(database.String, nullable=False)
     fotos = database.relationship("Foto", backref="usuario", lazy=True)
+    comentarios = database.relationship("Comentario", backref="usuario", lazy=True)
 
 
 class Foto(database.Model):
@@ -21,3 +22,11 @@ class Foto(database.Model):
     imagem = database.Column(database.String, default="default.png")
     data_criacao = database.Column(database.DateTime, nullable=False, default=datetime.utcnow())
     id_usuario = database.Column(database.Integer, database.ForeignKey('usuario.id'), nullable=False)
+    comentarios = database.relationship("Comentario", backref="foto", lazy=True)
+
+
+class Comentario(database.Model):
+    id = database.Column(database.Integer, primary_key=True)
+    data_criacao = database.Column(database.DateTime, nullable=False, default=datetime.utcnow())
+    id_usuario = database.Column(database.Integer, database.ForeignKey('usuario.id'), nullable=False)
+    id_foto = database.Column(database.Integer, database.ForeignKey('foto.id'), nullable=False)
