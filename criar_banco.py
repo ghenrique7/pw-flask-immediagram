@@ -1,5 +1,5 @@
-from app_imediagram import app, database
+from app_imediagram import __init__, database
 from app_imediagram.models import Usuario, Foto
 
-with app.app_context():
+with __init__.app_context():
     database.create_all()

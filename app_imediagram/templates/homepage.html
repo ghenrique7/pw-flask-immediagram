@@ -22,15 +22,6 @@
 
 
 <div>
-    {% if current_user.is_authenticated %}
-        {% block navbar %}
-            {% include('navbar.html') %}
-        {% endblock %}
-    {% endif %}
-</div>
-
-
-<div>
     {% block content %}
         {% include('login.html') %}
     {% endblock %}
