@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, flash
-from app_imediagram import __init__, database, bcrypt
+from app_imediagram import app, database, bcrypt
 from app_imediagram.models import Usuario, Foto
 from flask_login import login_required, login_user, logout_user, current_user
 from app_imediagram.forms import FormLogin, FormCriarConta, FormFoto

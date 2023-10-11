@@ -1,5 +1,5 @@
-from app_imediagram import __init__
+from app_imediagram import app
 
 if __name__ == '__main__':
     # Atualiza de acordo com as mudanças de codigo
-    __init__.run(debug=True)
+    app.run(debug=True)
